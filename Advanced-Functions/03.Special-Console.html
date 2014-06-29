@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Special Console</title>
+    <link href="styles/style.min.css" rel="stylesheet" />
+    <script src="scripts/special-console.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header id="top-header">
+            <p>
+                03.Create a module to work with the console object. Implement functionality for:
+            </p>
+            <ul>
+                <li>
+                    Writing a line to the console
+                </li>
+                <li>
+                    Writing a line to the console using a format
+                </li>
+                <li>
+                    Writing to the console should call <span class="important">toString()</span> to each element
+                </li>
+                <li>
+                    Writing errors and warnings to the console with and without format
+                </li>
+            </ul>
+        </header>
+        <section>
+            <header>
+                <h1>Press F12 to check the console</h1>
+            </header>
+        </section>
+    </div>
+    <script>
+        specialConsole.writeLine('Бат Гиорги лъзгам съ!');
+        specialConsole.writeLine('Бат Гиорги {0} съ!', 'задушаам'); 
+        specialConsole.writeWarning("Danger!");
+        specialConsole.writeError("Fatal error");
+    </script>
+</body>
+</html>

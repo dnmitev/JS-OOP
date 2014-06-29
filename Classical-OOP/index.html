@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Drawing on canvas</title>
+    <link href="styles/style.min.css" rel="stylesheet" />
+    <script src="scripts/draw-engine.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header id="top-header">
+            <p>
+                Create a module for drawing shapes using Canvas. Implement the following shapes:
+            </p>
+            <ul>
+                <li>
+                    Rect, by given position (X, Y) and size (Width, Height)
+                </li>
+                <li>
+                    Circle, by given center position (X, Y) and radius (R)
+                </li>
+                <li>
+                    Line, by given from (X1, Y1) and to (X2, Y2) positions
+                </li>
+            </ul>
+        </header>
+        <canvas id="canvas-element" width="1080" height="500">
+            YOUR BROWSER DOES NOT SUPPORT CANVAS ELEMENTS!
+        </canvas>
+    </div>
+    <script>
+        var render = new CanvasRenderEngine('#canvas-element');
+
+        render.drawLine(100, 100, 200, 200);
+        render.drawLine(150, 120, 250, 220, 'yellowgreen', 4);
+
+        render.drawCicle(300, 100, 50);
+        render.drawCicle(450, 100, 50, 'black', 'yellowgreen', 5);
+
+        render.drawRect(300, 300, 100, 50);
+        render.drawRect(500, 300, 100, 50, 'black', 'yellowgreen', 5);
+    </script>
+</body>
+</html>
