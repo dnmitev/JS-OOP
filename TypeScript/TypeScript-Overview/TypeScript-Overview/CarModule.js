@@ -4,102 +4,106 @@
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var Cars;
-(function (Cars) {
+var Vehicles;
+(function (Vehicles) {
     "use strict";
     (function (EngineType) {
         EngineType[EngineType["Petrol"] = 0] = "Petrol";
         EngineType[EngineType["Diesel"] = 1] = "Diesel";
         EngineType[EngineType["Electricity"] = 2] = "Electricity";
         EngineType[EngineType["NaturalGas"] = 3] = "NaturalGas";
-    })(Cars.EngineType || (Cars.EngineType = {}));
-    var EngineType = Cars.EngineType;
+    })(Vehicles.EngineType || (Vehicles.EngineType = {}));
+    var EngineType = Vehicles.EngineType;
     ;
-    (function (CoupeType) {
-        CoupeType[CoupeType["Convertible"] = 0] = "Convertible";
-        CoupeType[CoupeType["Roadstar"] = 1] = "Roadstar";
-        CoupeType[CoupeType["Sportsback"] = 2] = "Sportsback";
-        CoupeType[CoupeType["Coupe"] = 3] = "Coupe";
-        CoupeType[CoupeType["SUV"] = 4] = "SUV";
-    })(Cars.CoupeType || (Cars.CoupeType = {}));
-    var CoupeType = Cars.CoupeType;
-    ;
-    (function (MercedesModel) {
-        MercedesModel[MercedesModel["C"] = 0] = "C";
-        MercedesModel[MercedesModel["E"] = 1] = "E";
-        MercedesModel[MercedesModel["SL"] = 2] = "SL";
-        MercedesModel[MercedesModel["CL"] = 3] = "CL";
-        MercedesModel[MercedesModel["CLS"] = 4] = "CLS";
-        MercedesModel[MercedesModel["SLK"] = 5] = "SLK";
-        MercedesModel[MercedesModel["S"] = 6] = "S";
-        MercedesModel[MercedesModel["ML"] = 7] = "ML";
-        MercedesModel[MercedesModel["GL"] = 8] = "GL";
-    })(Cars.MercedesModel || (Cars.MercedesModel = {}));
-    var MercedesModel = Cars.MercedesModel;
+    (function (VehicleType) {
+        VehicleType[VehicleType["Car"] = 0] = "Car";
+        VehicleType[VehicleType["SUV"] = 1] = "SUV";
+        VehicleType[VehicleType["Truck"] = 2] = "Truck";
+        VehicleType[VehicleType["Motorbike"] = 3] = "Motorbike";
+    })(Vehicles.VehicleType || (Vehicles.VehicleType = {}));
+    var VehicleType = Vehicles.VehicleType;
     ;
 
-    var Car = (function () {
-        function Car(year, engine, type) {
-            this.year = year;
+    var Vehicle = (function () {
+        function Vehicle(manufacturer, engine, year) {
+            this.manufacturer = manufacturer;
             this.engine = engine;
-            this.type = type;
+            this.year = year;
+        }
+        Vehicle.prototype.getOverview = function () {
+            return "Manufacturer: " + this.manufacturer + "\nEngine: " + EngineType[this.engine.type] + " fuel; " + this.engine.volume + " cm3; " + this.engine.power + " hp" + "\nYear: " + this.year;
+        };
+        return Vehicle;
+    })();
+    Vehicles.Vehicle = Vehicle;
+
+    var Car = (function (_super) {
+        __extends(Car, _super);
+        function Car(manufacturer, engine, year) {
+            _super.call(this, manufacturer, engine, year);
+            this.vehicleType = 0 /* Car */;
         }
         Car.prototype.getOverview = function () {
-            return " Year: " + this.year + " Fuel: " + EngineType[this.engine.type] + " Coupe: " + CoupeType[this.type];
+            return _super.prototype.getOverview.call(this) + "\nVehicle type: " + VehicleType[this.vehicleType];
         };
 
-        Car.prototype.getFuelConsuption = function () {
-            var consumption = Math.round(Math.random() * 5);
-
-            console.log("Fuel consumption: " + consumption + " l/100km");
+        Car.prototype.starEngine = function () {
+            return "Engine started!";
         };
 
-        Car.prototype.startEngine = function () {
-            return "Engine started! Do you feel those " + this.engine.power + " horse running angry?!?!";
-        };
-
-        Car.prototype.tuneEngine = function (addPower, addVolume) {
+        Car.prototype.tuneEngine = function (addPower) {
             this.engine.power += addPower;
-            this.engine.volume += addVolume;
         };
         Car.MaxAllowedSpeed = 260;
         return Car;
-    })();
-    Cars.Car = Car;
+    })(Vehicle);
+    Vehicles.Car = Car;
 
-    var Mercedes = (function (_super) {
-        __extends(Mercedes, _super);
-        function Mercedes(model, year, engine, type) {
-            _super.call(this, year, engine, type);
-            this._brandName = "Mercedes";
-            this.model = model;
+    var Truck = (function (_super) {
+        __extends(Truck, _super);
+        function Truck(manufacturer, engine, year, capacity) {
+            _super.call(this, manufacturer, engine, year);
+            this.isLoaded = false;
+            this._capacity = capacity;
+            this.vehicleType = 2 /* Truck */;
+            this.load = 0;
         }
-        Mercedes.prototype.getOverview = function () {
-            return this._brandName + " Model: " + MercedesModel[this.model] + " class " + _super.prototype.getOverview.call(this);
+        Truck.prototype.getOverview = function () {
+            return _super.prototype.getOverview.call(this) + "\nVehicle type: " + VehicleType[this.vehicleType] + "\Load capacity: " + this._capacity + (this.isLoaded ? "\nLoad: " + this.load + "kg" : "");
         };
 
-        Mercedes.prototype.startEngine = function () {
-            return _super.prototype.startEngine.call(this) + "This sounds like an AMG! OMG!!!!";
+        Truck.prototype.loadTruck = function (cargo) {
+            if (cargo <= this._capacity) {
+                this.load += cargo;
+                this.isLoaded = true;
+            } else {
+                throw Error("You cannot load more than the capacity of the truck");
+            }
         };
-        return Mercedes;
-    })(Car);
-    Cars.Mercedes = Mercedes;
-})(Cars || (Cars = {}));
 
-var engine = {
+        Truck.prototype.unloadTruck = function (cargo) {
+            if (cargo) {
+                this.load -= cargo;
+            } else {
+                this.load = 0;
+                this.isLoaded = false;
+            }
+        };
+        Truck.MaxAllowedSpeed = 100;
+        return Truck;
+    })(Vehicle);
+    Vehicles.Truck = Truck;
+})(Vehicles || (Vehicles = {}));
+
+var e = {
     type: 0 /* Petrol */,
     volume: 2000,
-    power: 300
+    power: 154
 };
 
-var c = new Cars.Car(2014, engine, 4 /* SUV */);
-var m = new Cars.Mercedes(4 /* CLS */, 2014, engine, 1 /* Roadstar */);
-console.log(m.startEngine());
-console.log("Power:" + m.engine.power);
-console.log("Power:" + m.engine.volume);
-
-m.tuneEngine(20, 200);
-
-console.log("Power:" + m.engine.power);
-console.log("Power:" + m.engine.volume);
+//var c: Vehicles.Car = new Vehicles.Car("Mercedes", e, 2014);
+//console.log(c.getOverview());
+var t = new Vehicles.Truck("Scania", e, 2008, 1000);
+t.loadTruck(900);
+console.log(t.getOverview());
 //# sourceMappingURL=CarModule.js.map

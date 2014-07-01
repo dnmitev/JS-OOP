@@ -22,7 +22,7 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="CarModule.ts" />
+    <TypeScriptCompile Include="VehicleModule.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
