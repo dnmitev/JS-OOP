@@ -128,4 +128,4 @@ var Vehicles;
     })(Vehicle);
     Vehicles.Motorbike = Motorbike;
 })(Vehicles || (Vehicles = {}));
-//# sourceMappingURL=vehiclemodule.js.map
+//# sourceMappingURL=VehicleModule.js.map

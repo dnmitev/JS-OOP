@@ -17,15 +17,25 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
     <Content Include="index.html" />
+    <Content Include="styles\style.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <Content Include="styles\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="DriverModule.ts" />
+    <TypeScriptCompile Include="Test.ts" />
     <TypeScriptCompile Include="VehicleModule.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="styles\style.less" />
+    <Content Include="styles\style.css.map">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
