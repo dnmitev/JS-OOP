@@ -32,7 +32,7 @@ var Vehicles;
             this.year = year;
         }
         Vehicle.prototype.getOverview = function () {
-            return "Manufacturer: " + this.manufacturer + "\nEngine: " + EngineType[this.engine.type] + " fuel; " + this.engine.volume + "cm3; " + this.engine.power + "hp" + "\nYear: " + this.year;
+            return "\tManufacturer: " + this.manufacturer + "\n\tEngine: " + EngineType[this.engine.type] + " fuel; " + this.engine.volume + "cm3; " + this.engine.power + "hp" + "\n\tYear: " + this.year;
         };
         return Vehicle;
     })();
@@ -45,7 +45,7 @@ var Vehicles;
             this.vehicleType = 0 /* Car */;
         }
         Car.prototype.getOverview = function () {
-            return _super.prototype.getOverview.call(this) + "\nVehicle type: " + VehicleType[this.vehicleType];
+            return _super.prototype.getOverview.call(this) + "\n\tVehicle type: " + VehicleType[this.vehicleType];
         };
 
         Car.prototype.tuneEngine = function (addPower) {
@@ -66,7 +66,7 @@ var Vehicles;
             this.load = 0;
         }
         Truck.prototype.getOverview = function () {
-            return _super.prototype.getOverview.call(this) + "\nVehicle type: " + VehicleType[this.vehicleType] + "\Load capacity: " + this._capacity + (this.isLoaded ? "\nLoad: " + this.load + "kg" : "");
+            return _super.prototype.getOverview.call(this) + "\n\tVehicle type: " + VehicleType[this.vehicleType] + "\n\tLoad capacity: " + this._capacity + (this.isLoaded ? "\n\tLoad: " + this.load + "kg" : "");
         };
 
         Truck.prototype.loadTruck = function (cargo) {
@@ -99,7 +99,7 @@ var Vehicles;
             this.vehicleType = 1 /* SUV */;
         }
         Suv.prototype.getOverview = function () {
-            return _super.prototype.getOverview.call(this) + "\nVehicle type: " + VehicleType[this.vehicleType] + (this._isOffroad ? "\nOffroad: engaged;" : "");
+            return _super.prototype.getOverview.call(this) + "\n\tVehicle type: " + VehicleType[this.vehicleType] + (this._isOffroad ? "\n\tOffroad: engaged;" : "");
         };
 
         Suv.prototype.engageOffroad = function () {
@@ -121,11 +121,11 @@ var Vehicles;
             this.vehicleType = 3 /* Motorbike */;
         }
         Motorbike.prototype.getOverview = function () {
-            return _super.prototype.getOverview.call(this) + "\nVehicle type: " + VehicleType[this.vehicleType];
+            return _super.prototype.getOverview.call(this) + "\n\tVehicle type: " + VehicleType[this.vehicleType];
         };
         Motorbike.MaxAllowedSpeed = 300;
         return Motorbike;
     })(Vehicle);
     Vehicles.Motorbike = Motorbike;
 })(Vehicles || (Vehicles = {}));
-//# sourceMappingURL=VehicleModule.js.map
+//# sourceMappingURL=vehiclemodule.js.map

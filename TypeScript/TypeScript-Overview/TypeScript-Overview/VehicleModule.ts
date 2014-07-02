@@ -28,10 +28,10 @@
         }
 
         getOverview(): string {
-            return "Manufacturer: " + this.manufacturer +
-                "\nEngine: " + EngineType[this.engine.type] + " fuel; " +
+            return "\tManufacturer: " + this.manufacturer +
+                "\n\tEngine: " + EngineType[this.engine.type] + " fuel; " +
                 this.engine.volume + "cm3; " + this.engine.power + "hp" +
-                "\nYear: " + this.year;
+                "\n\tYear: " + this.year;
         }
     }
 
@@ -47,7 +47,7 @@
 
         getOverview(): string {
             return super.getOverview() +
-                "\nVehicle type: " + VehicleType[this.vehicleType];
+                "\n\tVehicle type: " + VehicleType[this.vehicleType];
         }
 
         tuneEngine(addPower: number): void {
@@ -72,9 +72,9 @@
 
         getOverview(): string {
             return super.getOverview() +
-                "\nVehicle type: " + VehicleType[this.vehicleType] +
-                "\Load capacity: " + this._capacity +
-                (this.isLoaded ? "\nLoad: " + this.load + "kg" : "");
+                "\n\tVehicle type: " + VehicleType[this.vehicleType] +
+                "\n\tLoad capacity: " + this._capacity +
+                (this.isLoaded ? "\n\tLoad: " + this.load + "kg" : "");
         }
 
         loadTruck(cargo: number): void {
@@ -109,8 +109,8 @@
 
         getOverview(): string {
             return super.getOverview() +
-                "\nVehicle type: " + VehicleType[this.vehicleType] +
-                (this._isOffroad ? "\nOffroad: engaged;" : "");
+                "\n\tVehicle type: " + VehicleType[this.vehicleType] +
+                (this._isOffroad ? "\n\tOffroad: engaged;" : "");
         }
 
         engageOffroad(): void {
@@ -134,7 +134,7 @@
 
         getOverview(): string {
             return super.getOverview() +
-                "\nVehicle type: " + VehicleType[this.vehicleType];
+                "\n\tVehicle type: " + VehicleType[this.vehicleType];
         }
     }
 }
