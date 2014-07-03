@@ -29,7 +29,7 @@
     }
 
     function performGameStop() {
-        game.start();
+        game.stop();
         startBtn.disabled = false;
         stopBtn.disabled = true;
     }

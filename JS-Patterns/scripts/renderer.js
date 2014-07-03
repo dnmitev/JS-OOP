@@ -34,10 +34,17 @@ var renderEngine = (function () {
         var ctx = canvas.getContext('2d'),
             position = food.getPosition();
 
+        //ctx.fillStyle = 'green';
+        //ctx.fillRect(position.x, position.y, food.size, food.size);
+        //ctx.strokeStyle = 'black';
+        //ctx.strokeRect(position.x, position.y, food.size, food.size);
+
+        ctx.beginPath()
+        ctx.arc(position.x, position.y, food.size, 0, 2 * Math.PI);
         ctx.fillStyle = 'green';
-        ctx.fillRect(position.x, position.y, food.size, food.size);
         ctx.strokeStyle = 'black';
-        ctx.strokeRect(position.x, position.y, food.size, food.size);
+        ctx.stroke();
+        ctx.fill();
     };
 
     drawWall = function (canvas, wall) {

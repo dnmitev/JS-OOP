@@ -2,17 +2,21 @@
 var snakes = (function () {
     var SNAKE_PART_SIZE = 15,
         directions = [{
+            // left
+            dx: -1,
+            dy: 0
+        }, {
+            // up
             dx: 0,
             dy: -1
         }, {
+            // right
             dx: +1,
             dy: 0
         }, {
+            // down
             dx: 0,
             dy: +1
-        }, {
-            dx: -1,
-            dy: 0
         }];
 
     function GameObject(x, y, size) {
@@ -59,7 +63,7 @@ var snakes = (function () {
             i;
 
         this.parts = [];
-        this.direction = 1;
+        this.direction = 2;
 
         for (i = 0; i < size; i += 1) {
             xPartPos = x - i * SNAKE_PART_SIZE;
@@ -111,9 +115,7 @@ var snakes = (function () {
             head.changePosition(newHeadPosition.x, newHeadPosition.y);
         },
         changeDirection: function (newDirection) {
-            if (newDirection >= 0 && newDirection < directions.length && (this.direction + newDirection) % 2) {
-                this.direction = newDirection;
-            }
+            this.direction = newDirection;
         }
     }
 

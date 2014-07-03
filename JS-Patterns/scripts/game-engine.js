@@ -4,13 +4,15 @@ var games = (function () {
 
     function GameEngine(renderEngine) {
         this.renderEngine = renderEngine;
-        this.snake = new snakes.get(250, 250, 25);
+        this.snake = new snakes.get(250, 250, 15);
+        this.food = new snakes.getFood(150, 150, 7); //TODO - collection of food
         this.bindKeyEvents();
         this.state = 'stopped';
     }
 
     function animationFrame() {
         var snakePosition = currGame.snake.getPosition(),
+            foodPosition = currGame.food.getPosition(),
             toChangePosition = false,
             newX = snakePosition.x,
             newY = snakePosition.y;
@@ -40,6 +42,8 @@ var games = (function () {
         currGame.renderEngine.clear();
         currGame.snake.move();
         currGame.renderEngine.draw(currGame.snake);
+        currGame.renderEngine.draw(currGame.food);
+
 
         if (currGame.state === 'running') {
             requestAnimationFrame(animationFrame);
