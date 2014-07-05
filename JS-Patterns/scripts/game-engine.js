@@ -1,18 +1,52 @@
 ﻿/// <reference path="_references.js" />
 var games = (function () {
-    var dimensions;
+    var dimensions,
+        MAX_FOOD_COUNT = 9,
+        MAX_WALL_COUNT = 5;
 
     function GameEngine(renderEngine) {
         this.renderEngine = renderEngine;
-        this.snake = new snakes.get(250, 250, 15);
-        this.food = new snakes.getFood(150, 150, 7); //TODO - collection of food
+        this.snake = new snakes.get(250, 250, 5);
+        this.food = [];
+        this.wall = [];
         this.bindKeyEvents();
         this.state = 'stopped';
     }
 
+    function fillFoodArray(count) {
+        var i,
+            w, h,
+            x, y;
+
+        w = dimensions.maxWidth;
+        h = dimensions.maxHeight;
+
+        for (i = 0; i < count; i += 1) {
+            x = Math.floor(Math.random() * w);
+            y = Math.floor(Math.random() * h);
+
+            currGame.food.push(new snakes.getFood(x, y, 12));
+        }
+    }
+
+    function fillWallArray(count) {
+        var i,
+            w, h,
+            x, y;
+
+        w = dimensions.maxWidth;
+        h = dimensions.maxHeight;
+
+        for (i = 0; i < count; i += 1) {
+            x = Math.floor(Math.random() * w);
+            y = Math.floor(Math.random() * h);
+
+            currGame.wall.push(new snakes.getWall(x, y, 15, 60));
+        }
+    }
+
     function animationFrame() {
         var snakePosition = currGame.snake.getPosition(),
-            foodPosition = currGame.food.getPosition(),
             toChangePosition = false,
             newX = snakePosition.x,
             newY = snakePosition.y;
@@ -42,19 +76,32 @@ var games = (function () {
         currGame.renderEngine.clear();
         currGame.snake.move();
         currGame.renderEngine.draw(currGame.snake);
-        currGame.renderEngine.draw(currGame.food);
 
+        for (var i = 0, len = currGame.food.length; i < len; i += 1) {
+            currGame.renderEngine.draw(currGame.food[i]);
+        }
+
+        for (var i = 0, l = currGame.wall.length; i < l; i += 1) {
+            currGame.renderEngine.draw(currGame.wall[i]);
+        }
 
         if (currGame.state === 'running') {
-            requestAnimationFrame(animationFrame);
+            setTimeout(function () {
+                // I know it's a lame way to slow down my game execution
+                // but I couldn't think of better way now
+                // if you know kind of better way feel free to inform me
+                requestAnimationFrame(animationFrame);
+            }, 125)
         }
     }
 
     GameEngine.prototype = {
         start: function () {
             currGame = this;
-            requestAnimationFrame(animationFrame);
             dimensions = this.renderEngine.getDimensions();
+            fillFoodArray(Math.floor(Math.random() * MAX_FOOD_COUNT));
+            fillWallArray(Math.floor(Math.random() * MAX_WALL_COUNT));
+            requestAnimationFrame(animationFrame);
             this.state = 'running';
         },
         stop: function () {

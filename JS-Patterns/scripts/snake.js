@@ -47,7 +47,7 @@ var snakes = (function () {
     SnakePart.prototype.changePosition = function (x, y) {
         this.x = x;
         this.y = y;
-    }
+    };
 
     function SnakeHeadPart(x, y, size) {
         SnakePart.call(this, x, y, size);
@@ -109,15 +109,23 @@ var snakes = (function () {
             currentHeadPosition = head.getPosition();
             newHeadPosition = {
                 x: currentHeadPosition.x + head.size * dx,
-                y: currentHeadPosition.y + head.size * dy,
+                y: currentHeadPosition.y + head.size * dy
             };
 
             head.changePosition(newHeadPosition.x, newHeadPosition.y);
         },
         changeDirection: function (newDirection) {
-            this.direction = newDirection;
+            var currentDirection = this.direction;
+
+            if (this.direction === 0 && newDirection === 2) {
+                this.direction = currentDirection;
+            } else if (this.direction === 1 && newDirection === 3) {
+                this.direction = currentDirection;
+            } else {
+                this.direction = newDirection;
+            }
         }
-    }
+    };
 
     function Food(x, y, size) {
         GameObject.call(this, x, y, size);
@@ -139,6 +147,9 @@ var snakes = (function () {
         },
         getFood: function (x, y, size) {
             return new Food(x, y, size);
+        },
+        getWall: function (x, y, size) {
+            return new Wall(x, y, size);
         },
         Snake: Snake,
         SnakePart: SnakePart,

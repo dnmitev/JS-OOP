@@ -34,27 +34,21 @@ var renderEngine = (function () {
         var ctx = canvas.getContext('2d'),
             position = food.getPosition();
 
-        //ctx.fillStyle = 'green';
-        //ctx.fillRect(position.x, position.y, food.size, food.size);
-        //ctx.strokeStyle = 'black';
-        //ctx.strokeRect(position.x, position.y, food.size, food.size);
-
-        ctx.beginPath()
-        ctx.arc(position.x, position.y, food.size, 0, 2 * Math.PI);
         ctx.fillStyle = 'green';
+        ctx.fillRect(position.x, position.y, food.size, food.size);
         ctx.strokeStyle = 'black';
-        ctx.stroke();
-        ctx.fill();
+        ctx.strokeRect(position.x, position.y, food.size, food.size);
     };
 
     drawWall = function (canvas, wall) {
         var ctx = canvas.getContext('2d'),
             position = wall.getPosition();
 
+
         ctx.fillStyle = 'black';
-        ctx.fillRect(position.x, position.y, wall.size, wall.size);
+        ctx.fillRect(position.x, position.y, wall.size, 4 * wall.size);
         ctx.strokeStyle = 'black';
-        ctx.strokeRect(position.x, position.y, part.size, part.size);
+        ctx.strokeRect(position.x, position.y, wall.size, 4 * wall.size);
     };
 
     function CanvasRenderEngine(canvas) {
