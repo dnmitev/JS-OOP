@@ -117,9 +117,11 @@ var snakes = (function () {
         changeDirection: function (newDirection) {
             var currentDirection = this.direction;
 
-            if (this.direction === 0 && newDirection === 2) {
+            if (this.direction === 0 && newDirection === 2 ||
+                    this.direction === 2 && newDirection === 0) {
                 this.direction = currentDirection;
-            } else if (this.direction === 1 && newDirection === 3) {
+            } else if (this.direction === 1 && newDirection === 3 ||
+                    this.direction === 3 && newDirection === 1) {
                 this.direction = currentDirection;
             } else {
                 this.direction = newDirection;
