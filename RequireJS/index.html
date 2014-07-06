@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>RequireJS</title>
+    <link href="Styles/style.min.css" rel="stylesheet" />
+    <script src="Scripts/libs/require.js" data-main="Scripts/main"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header id="top-header">
+            <p>
+                Implement a <span class="important">ComboBox</span> control (like a dropdown list)
+            </p>
+            <ul>
+                <li>
+                    The ComboBox holds a set of items (an array)
+                </li>
+                <li>
+                    Initially only a single item, the selected item, is visible(<span class="important">the ComboBox is collapsed</span>)
+                </li>
+                <li>
+                    When the selected item is clicked, all other items are shown (<span class="important">the ComboBox is expanded</span>
+                    <ul>
+                        <li>
+                            If an item is clicked, it becomes the selected item and the ComboBox collapses
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Each of the items in a ComboBox can contain any valid HTML code
+                </li>
+                <li>
+                    Use <span class="important">RequireJS</span> and <span class="important">handlebars.js</span>
+                    <ul>
+                        <li>jQuery is not obligatory (use it if you will)</li>
+                    </ul>
+                </li>
+                <li>
+                    The ComboBox should have the following usage:
+<pre>
+<code>
+var people = [
+    { id: 1, name: "Doncho Minkov", age: 18, avatarUrl: "images/minkov.jpg" },
+    { id: 2, name: "Georgi Georgiev", age: 19, avatarUrl: "images/joreto.jpg" }];
+var comboBox = controls.ComboBox(people);
+var template = $("#person-template").html();
+var comboBoxHtml = comboBox.render(template);
+container.innerHTML = comboBoxHtml;
+</code>
+//sample template
+&lt;div class="person-item" id="person-item-{{id}}"&gt;
+&lt;strong class="person-name"&gt;{{name}}
+&lt;/strong&gt;&lt;p class="person-age"&gt;{{age}}&lt;/p&gt;
+&lt; img src="{{avatarUrl}}" width="100px" /&gt;
+&lt;/div&gt;
+</pre>
+                </li>
+            </ul>
+        </header>
+        <div id="main-container" data-template="person-template">
+            <div class="selected-person">Select person</div>
+        </div>
+    </div>
+
+    <script id="person-template" type="text/x-handlebars-template">
+        <div class="person-item" id="person-item-{{id}}">
+            <strong class="person-name">Name: {{name}}</strong><p class="person-age">Age: {{age}}</p>
+            <img src="{{avatarUrl}}" width="100px" />
+        </div>
+    </script>
+</body>
+</html>

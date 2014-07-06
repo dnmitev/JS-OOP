@@ -1,0 +1,46 @@
+﻿body {
+  width: 1080px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body #top-header {
+  width: 70%;
+  height: 100%;
+  padding: 0 10px;
+  margin: 10px;
+  border: 3px solid yellowgreen;
+  border-radius: 15px;
+  background-color: black;
+  color: yellowgreen;
+  display: inline-block;
+}
+body #top-header p {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+body #top-header ul {
+  font-style: italic;
+}
+#wrapper {
+  width: 100%;
+}
+.important {
+  font-weight: bold;
+  color: blue;
+}
+#main-container {
+  display: inline-block;
+  border: 1px dashed yellowgreen;
+  background-color: black;
+  color: yellowgreen;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 60%;
+}
+.person-item {
+  border: 1px dashed yellowgreen;
+  background-color: black;
+  color: yellowgreen;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
