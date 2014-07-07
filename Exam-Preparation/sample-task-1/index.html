@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The TODO List</title>
+    <link href="../Styles/style.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header id="top-header">
+        <p>
+            You must complete the functionality for a TODO list
+        </p>
+        <ul>
+            <li>
+                A TODO list has a single container
+            </li>
+            <li>
+                A container can contain only sections
+                <ul>
+                    <li>Sections can be zero or more</li>
+                </ul>
+            </li>
+            <li>
+                A section have a title (string) and only contain items
+                <ul>
+                    <li>Items can be zero or more</li>
+                </ul>
+            </li>
+            <li>
+                Items have content (string)
+            </li>
+            <li>
+                Implement the methods for the types Item, Section and Container
+                <ul>
+                    <li>
+                        You are allowed only to extend the scripts inside the files <span class="important">'container.js'</span>, <span class="important">'item.js'</span> and <span class="important">'section.js'</span>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Methods descriptions:
+                <ul>
+                    <li><span class="important">Container.add(section)</span> adds a section to the container</li>
+                    <li><span class="important">Container.getData()</span>  returns a JSON array with sections</li>
+                    <li><span class="important">Section.add(item)</span>  adds an item to the given section</li>
+                    <li><span class="important">Section.getData()</span>  returns its title and an array with items</li>
+                    <li><span class="important">Item.getData()</span>  returns the content of the item</li>
+                </ul>
+            </li>
+            <li>Your are given a few files, that <span class="important">must not be changed</span></li>
+        </ul>
+    </header>
+    <h1>
+        Press F12 and check the console to see the result.
+    </h1>
+    <div id="todo-list">
+    </div>
+    <script src="scripts/libs/requirejs/require.js"
+            data-main="scripts/app"></script>
+</body>
+</html>

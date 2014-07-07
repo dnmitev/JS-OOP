@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Courses Database</title>
+    <link href="../Styles/style.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header id="top-header">
+        <p>
+            You are given a courses database
+        </p>
+        <ul>
+            <li>
+                Courses have title and students that participate in them
+                <ul>
+                    <li>Courses must be able to return the best students either by their exam score or by their total score</li>
+                    <li>The score of a student for a course is calculated by a given formulate, that is specific for each course</li>
+                </ul>
+            </li>
+            <li>
+                Students have exam score, homework score, attendance score, teamwork score and bonus score
+                <ul>
+                    <li>Each of these components are part of the total score of the student for a course</li>
+                </ul>
+            </li>
+            <li>
+                Each student can be part of zero or one course
+            </li>
+            <li>
+                By the given files, implement the functionality of the <span class="important">student.js</span> and <span class="important">course.js</span>
+                <ul>
+                    <li>
+                        You are only allowed to change the contents of these two files
+                    </li>
+                    <li>
+                        Create them using <span class="important">RequireJS</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <h1>
+        Press F12 and check the console to see the result.
+    </h1>
+    <script src="scripts/libs/requirejs/require.js"
+            data-main="scripts/app"></script>
+</body>
+</html>

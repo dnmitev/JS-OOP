@@ -1,0 +1,27 @@
+﻿body {
+  width: 1080px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body #top-header {
+  padding: 0 10px;
+  margin: 10px;
+  border: 3px solid yellowgreen;
+  border-radius: 15px;
+  background-color: black;
+  color: yellowgreen;
+}
+body #top-header p {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+body #top-header ul {
+  font-style: italic;
+}
+#wrapper {
+  width: 100%;
+}
+.important {
+  font-weight: bold;
+  color: blue;
+}
+/*# sourceMappingURL=style.css.map */
